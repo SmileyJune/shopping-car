@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+	<link rel="stylesheet" href="./css/bootstrap.min.css" />
+	<link rel="stylesheet" href="./css/style.css" />
+  <script type="text/javascript" src="./js/angular.min.js"></script>
+  <script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+</head>
+<body ng-app="app" ng-controller="aa">
+<div class="container-fluid con1" id="con1">
+   <div class="row row1">
+      <div class="col-md-2 col-sm-2 left">
+         <ul class="net">
+         	<li ng-click="list($event)" class="page1">肉品</li>
+         	<li ng-click="list($event)" class="page2">水产</li>
+         	<li ng-click="list($event)" class="page3">蔬菜</li>
+         	<li ng-click="list($event)" class="page4">干货杂粮</li>
+         	<li ng-click="list($event)" class="page5">糕点</li>
+         </ul>
+      </div>
+      <div class="col-md-10 col-sm-10 right">
+           <div class="row">
+             <div class="content" ng-switch="toggle">
+               <div class="div1" ng-switch-when="page1">
+                  <div class="col-sm-4 food" ng-repeat="x in arr[0].content">
+                     <div class="imgfood"><img ng-src="{{x.img}}" /></div>
+                     <div class="text">
+                        <p>{{x.name}}</p>
+                        <p>{{x.price}}元一份</p>
+                        <p>{{x.buy}}人买过</p>
+                     </div>
+                     <div class="addbtn" ng-click="add($event)" data-label={{x}}><img src="./img/btnpluss.png" /></div>
+                  </div>
+               </div>  
+               <!-- page1 end--> 
+               <div class="div1" ng-switch-when="page2">
+                  <div class="col-sm-4 food" ng-repeat="x in arr[1].content">
+                     <div class="imgfood"><img ng-src="{{x.img}}" /></div>
+                     <div class="text">
+                        <p>{{x.name}}</p>
+                        <p>{{x.price}}元一份</p>
+                        <p>{{x.buy}}人买过</p>
+                     </div>
+                     <div class="addbtn" ng-click="add($event)" data-label={{x}}><img src="./img/btnpluss.png" /></div>
+                  </div>
+               </div> 
+               <!-- page2 end--> 
+               <div class="div1" ng-switch-when="page3">
+                  <div class="col-sm-4 food" ng-repeat="x in arr[2].content">
+                     <div class="imgfood"><img ng-src="{{x.img}}" /></div>
+                     <div class="text">
+                        <p>{{x.name}}</p>
+                        <p>{{x.price}}元一份</p>
+                        <p>{{x.buy}}人买过</p>
+                     </div>
+                     <div class="addbtn" ng-click="add($event)" data-label={{x}}><img src="./img/btnpluss.png" /></div>
+                  </div>
+               </div> 
+               <!-- page3 end--> 
+               <div class="div1" ng-switch-when="page4">
+                  <div class="col-sm-4 food" ng-repeat="x in arr[3].content">
+                     <div class="imgfood"><img ng-src="{{x.img}}" /></div>
+                     <div class="text">
+                        <p>{{x.name}}</p>
+                        <p>{{x.price}}元一份</p>
+                        <p>{{x.buy}}人买过</p>
+                     </div>
+                     <div class="addbtn" ng-click="add($event)" data-label={{x}}><img src="./img/btnpluss.png" /></div>
+                  </div>
+               </div> 
+               <!-- page4 end--> 
+               <div class="div1" ng-switch-when="page5">
+                  <div class="col-sm-4 food" ng-repeat="x in arr[4].content">
+                     <div class="imgfood"><img ng-src="{{x.img}}" /></div>
+                     <div class="text">
+                        <p>{{x.name}}</p>
+                        <p>{{x.price}}元一份</p>
+                        <p>{{x.buy}}人买过</p>
+                     </div>
+                     <div class="addbtn" ng-click="add($event)" data-label={{x}}><img src="./img/btnpluss.png" /></div>
+                  </div>
+               </div> 
+               <!-- page5 end-->            
+             </div>  
+           </div>
+      </div>
+      <button class="btnBag btn-success" ng-click="car($event)">菜 篮 子</button>
+   </div>
+</div>
+
+<!-- 菜篮子 -->
+<div class="bag">
+   <div class="bagmain">
+      <div class="title">
+        <p>菜篮子</p>
+        <div class="zj">总价：{{zj}}元</div>
+        <button class="btn1 btn-warning" ng-click="delete($event)">清空</button>
+        <button class="btn2 btn-success" ng-click="chooseFood($event)">选菜</button>
+      </div>
+      <table class="table" style="text-align: center;">
+        <tr>
+          <td>菜名</td>
+          <td>单价(元)</td>
+          <td>添加</td>
+          <td>数量(份)</td>
+          <td>减少</td>
+          <td>单总价(元)</td>
+        </tr>
+        <tr ng-repeat="x in arr1" class="caibiao" data-aa={{x}}>
+          <td>{{x.name}}</td>
+          <td>{{x.price}}</td>
+          <td ng-click="jia($event)" data-id={{x.id}}>+</td>
+          <td>{{x.chooseNum}}</td>
+          <td ng-click="jian($event)" data-id={{x.id}}>-</td>
+          <td>{{x.price*x.chooseNum}}</td>
+        </tr>
+      </table>
+   </div>
+</div>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript" src="./js/index.js"></script>
+</body>
+</html>
